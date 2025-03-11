@@ -5,14 +5,14 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-  class="flex items-center justify-between px-4 gap-8 border-b-2 border-b-indigo-100 h-20"
+  class="flex items-center justify-between px-4 gap-8 border-b-2 bg-[radial-gradient(184.83%_194.44%_at_105.85%_4.1%,_rgba(95,186,254,1)_46.89%,_rgba(105,211,129,1)_58.93%)] h-40"
 >
   <a href="/">
     <Logo />
   </a>
   <button
     id="menu-btn"
-    class="group relative z-10 flex h-3 w-6 flex-col justify-between lg:hidden *:block *:ease *:h-0.5 *:w-full *:transform *:rounded-full *:bg-black *:transition *:duration-300"
+    class="group relative z-30 flex h-3 w-6 flex-col justify-between lg:hidden *:block *:ease *:h-0.5 *:w-full *:transform *:rounded-full *:bg-black *:transition *:duration-300"
     aria-label="Menu"
     aria-controls="menu"
     aria-expanded="false"
@@ -26,36 +26,36 @@ const currentPath = Astro.url.pathname;
   </button>
   <nav
     id="menu"
-    class="flex-1 px-6 py-12 flex justify-between mt-20 flex-col fixed z-10 inset-0 bg-indigo-50 visible opacity-100 max-lg:aria-hidden:invisible max-lg:aria-hidden:opacity-0 lg:mt-0 lg:flex-row lg:static lg:bg-transparent lg:py-6 lg:visible lg:opacity-100"
+    class="flex-1 px-6 py-12 flex justify-between flex-col fixed z-10 inset-0 bg-[radial-gradient(184.83%_194.44%_at_105.85%_4.1%,_rgba(95,186,254,1)_46.89%,_rgba(105,211,129,1)_58.93%)] visible opacity-100 max-lg:aria-hidden:invisible max-lg:aria-hidden:opacity-0 lg:mt-0 lg:flex-row lg:static lg:bg-none lg:py-6 lg:visible lg:opacity-100"
     aria-hidden="true"
   >
-    <ul class="flex flex-col gap-4 lg:flex-row">
+    <ul class="flex flex-col gap-4 lg:flex-row text-2xl">
       <li>
         <a
-          class={`block p-4 rounded-lg text-gray-500 ${currentPath === "/properties" ? "text-indigo-600 font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
+          class={`block p-4 rounded-lg text-black ${currentPath === "/properties" ? "text-white font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
           href="/properties">A Propos</a
         >
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/buy"
+        <a class="block p-4 rounded-lg text-black" href="/buy"
           >Programmation des film 2025</a
         >
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/sell">Programmation des activité 2025</a>
-      </li>
-      <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/manage"
-          >Manage property</a
+        <a class="block p-4 rounded-lg text-black" href="/sell"
+          >Programmation des activité 2025</a
         >
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-gray-500" href="/resources"
+        <a class="block p-4 rounded-lg text-black" href="/manage">Invités</a>
+      </li>
+      <li>
+        <a class="block p-4 rounded-lg text-black" href="/resources"
           >Resources</a
         >
       </li>
     </ul>
-    <div class="flex items-center justify-center gap-4 px-4">
+    <div class="flex items-center justify-center  gap-4 px-4">
       <Button variant="outlined" url="/login" text="Login" />
       <Button variant="dark" url="/signup" text="Sign Up" />
     </div>

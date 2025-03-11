@@ -29,7 +29,7 @@
     }
 
     main a {
-        @apply text-indigo-500;
+        @apply text-red-800;
     }
 }
 
@@ -42,3 +42,4 @@
         @apply max-w-screen-xl mx-auto px-6;
     }
 }
+

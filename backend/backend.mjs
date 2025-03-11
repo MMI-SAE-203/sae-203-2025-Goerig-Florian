@@ -58,3 +58,16 @@ export async function addNewInvite(newInvite) {
 export async function addNewActivite(newActivite) {
     return await pb.collection('activite').create(newActivite);
 }   
+
+
+export async function updateFilmById(id, data) {
+    return await pb.collection('film').update(id, data);
+}   
+
+export async function updateInviteById(id, data) {
+    return await pb.collection('invite').update(id, data);
+}   
+
+export async function updateActiviteById(id, data) {
+    return await pb.collection('activite').update(id, data);
+}   

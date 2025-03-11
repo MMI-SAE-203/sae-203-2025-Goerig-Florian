@@ -1,5 +1,5 @@
 import { datefilm, dateactivite, listeinvite, oneID, oneIDActivite, oneIDInvite,
-    allActiviteByInvite, allActiviteByName, addNewFilm, addNewInvite, addNewActivite
+    allActiviteByInvite, allActiviteByName, addNewFilm, addNewInvite, addNewActivite, updateFilmById, updateInviteById, updateActiviteById,
 
 } from './backend.mjs';
 
@@ -99,7 +99,7 @@ import { datefilm, dateactivite, listeinvite, oneID, oneIDActivite, oneIDInvite,
     console.error(e);
 }*/
 
-try {
+/*try {
     const newActivite = {
         "type": "test",
         "date": "test",
@@ -110,6 +110,53 @@ try {
 
     await addNewActivite(newActivite);
 
+} catch (e) {
+    console.error(e);
+}*/
+
+/*try {
+    const data = {
+        "titre": "update",
+        "synopsis": "update",
+        "genre": "update",
+        "email": "upddate-test@gmail.com",
+        "realisateur": "update",
+        "langue": "update",
+        "duree": "update",
+
+    };
+
+    await updateFilmById('1vg939rsu974l56', data);
+} catch (e) {
+    console.error(e);
+}*/
+
+
+/*try {
+    const data = {
+        "nom": "update",
+        "prenom": "update",
+        "role": "update",
+        "email": "upddate-test@gmail.com",
+        "biographie": "update",
+        
+    };
+
+    await updateInviteById('041e979inj43y9d', data);
+} catch (e) {
+    console.error(e);
+}*/
+
+try {
+    const data = {
+        "type": "update",
+        "date": "update",
+        "description": "update",
+       
+
+    };
+
+    await updateActiviteById('y1ci690y4hvriji', data);
 } catch (e) {
     console.error(e);
 }

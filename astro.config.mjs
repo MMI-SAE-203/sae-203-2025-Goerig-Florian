@@ -1,11 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import node from '@astrojs/node';
+
+import alpinejs from '@astrojs/alpinejs';
+
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: node({
-    mode: 'standalone'
-  })
+
+  integrations: [tailwind({ applyBaseStyles: false }), alpinejs()],
+  experimental: {
+    svg: true,
+  }
 });

@@ -32,30 +32,35 @@ const currentPath = Astro.url.pathname;
     <ul class="flex flex-col gap-4 lg:flex-row text-2xl">
       <li>
         <a
-          class={`block p-4 rounded-lg text-black ${currentPath === "/properties" ? "text-white font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
+          class={`block p-4 rounded-lg text-black ${currentPath === "/a_propos" ? "text-white font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
           href="/properties">A Propos</a
         >
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-black" href="/buy"
-          >Programmation des film 2025</a
+        <a
+          class={`block p-4 rounded-lg text-black ${currentPath === "/programmation_film" ? "text-white font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
+          href="/programmation_film">Programmation des films 2025</a
         >
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-black" href="/sell"
-          >Programmation des activité 2025</a
+        <a
+          class={`block p-4 rounded-lg text-black ${currentPath === "/programmation_activite" ? "text-white font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
+          href="/programmation_activite">Programmation des activités 2025</a
         >
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-black" href="/manage">Invités</a>
+        <a
+          class={`block p-4 rounded-lg text-black ${currentPath === "/invite" ? "text-white font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
+          href="/invite">Invités</a
+        >
       </li>
       <li>
-        <a class="block p-4 rounded-lg text-black" href="/resources"
-          >Resources</a
+        <a class="block p-4 rounded-lg text-black" href="/infos"
+          >Infos Pratiques</a
         >
       </li>
     </ul>
-    <div class="flex items-center justify-center  gap-4 px-4">
+    <div class="flex items-center justify-center gap-4 px-4">
       <Button variant="outlined" url="/login" text="Login" />
       <Button variant="dark" url="/signup" text="Sign Up" />
     </div>

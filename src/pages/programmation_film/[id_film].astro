@@ -1,0 +1,31 @@
+---
+import { oneIDFilm } from "../../../backend/backend.mjs";
+import Layout from "../../layouts/Layout.astro";
+import ImagePB from "../../components/ImagePB.astro";
+const film = await oneIDFilm(Astro.params.id_film);
+---
+
+<Layout>
+  <h1>Programmation du film {film.titre}</h1>
+  <p><strong>Réalisateur:</strong> {film.realisateur}</p>
+  <p><strong>Année de sortie:</strong> <p set:html={film.annee} /></p>
+  <p><strong>Genre:</strong> {film.genre}</p>
+  <p><strong>Synopsis:</strong>{film.synopsis}</p>
+  <p><strong>Durée:</strong><p set:html={film.duree} /></p>
+<p><strong>Bande annonce:</strong> <a href={film.bande_annonce} target="_blank" rel="noopener noreferrer">Voir la bande annonce</a></p>
+  <p>
+    <ImagePB
+      record={film}
+      field="affiche"
+      alt={film.afficheAlt}
+      classPicture=" col-start-1 row-start-1 col-span-2 row-span-2 group-hover:before:bg-black"
+      classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+    />
+  </p>
+<p>
+    <strong>Invité :</strong>
+    <a href={`/invite/${film.expand?.invite_film.id}`}>
+        {film.expand?.invite_film.prenom} {film.expand?.invite_film.nom}
+    </a>
+</p>
+</Layout>

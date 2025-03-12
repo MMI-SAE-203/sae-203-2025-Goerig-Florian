@@ -3,20 +3,23 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../css/Base.css";
 const { title } = Astro.props;
+import { Picture } from "astro:assets";
 ---
 
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title ? `${title} — Estatery` : "Estatery"}</title>
+    <title>{title ? `${title} — Animēshon` : "Animēshon"}</title>
   </head>
-  <body class="antialiased text-gray-800 flex flex-col min-h-screen">
-    <Header />
-    <main class="flex-grow">
+  <body
+    class="antialiased text-black bg-[radial-gradient(184.83%_194.44%_at_105.85%_4.1%,_rgba(95,186,254,1)_46.89%,_rgba(105,211,129,1)_58.93%)] flex flex-col min-h-screen"
+  >
+    <main class="flex-grow ">
+      <Header />
       <slot />
+      <Footer class="w-full" />
     </main>
-    <Footer class="w-full bg-black" />
   </body>
 </html>

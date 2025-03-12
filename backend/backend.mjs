@@ -1,10 +1,11 @@
 import PocketBase from 'pocketbase';
-const pb = new PocketBase('http://127.0.0.1:8090/');
+export const pb = new PocketBase('http://127.0.0.1:8090/');
 
 export async function datefilm() {
     const records = await pb.collection('film').getFullList({sort: 'date'});
     return records;
 }
+
 
 export async function dateactivite() {
     const records = await pb.collection('activite').getFullList({ sort: 'date' });
@@ -17,13 +18,13 @@ export async function listeinvite() {
     return records;
 }
 
-export async function oneID(id) {
-    const oneRecord = await pb.collection('film').getOne(id);
+export async function oneIDFilm(id) {
+    const oneRecord = await pb.collection('film').getOne(id, { expand: 'invite_film' });
     return oneRecord;
 }
 
 export async function oneIDActivite(id) {
-    const oneRecord = await pb.collection('activite').getOne(id);
+    const oneRecord = await pb.collection('activite').getOne(id, {expand: 'invite_activite'});
     return oneRecord;
 }
 
@@ -71,3 +72,5 @@ export async function updateInviteById(id, data) {
 export async function updateActiviteById(id, data) {
     return await pb.collection('activite').update(id, data);
 }   
+
+

@@ -1,0 +1,13 @@
+---
+import LayoutWithHero from "../layouts/LayoutWithHero.astro";
+
+const { ...activite } = Astro.props;
+---
+
+<p>{activite.type}</p>
+<p>{activite.lieux}</p>
+
+<a
+  href={`/programmation_activite/${activite.id}`}
+  class="inline-block border-b-2 border-black uppercase">Plus d'info</a
+>

@@ -1,0 +1,20 @@
+---
+import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
+import CardInvite from "../../components/CardInvite.astro";
+import Invite from "../../assets/img/image17.webp";
+
+import { listeinvite } from "../../../backend/backend.mjs";
+const invites = await listeinvite();
+---
+
+<LayoutWithHero src={Invite} alt="image de la programmation des films">
+  <div class="grille my-24">
+    {
+      invites.length > 0 ? (
+        invites.map((invite) => <CardInvite {...invite} />)
+      ) : (
+        <p>Aucun invité prévu.</p>
+      )
+    }
+  </div>
+</LayoutWithHero>

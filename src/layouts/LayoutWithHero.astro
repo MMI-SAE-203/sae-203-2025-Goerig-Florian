@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import accueilImg from "../assets/img/Accueil.webp";
+import { Picture } from "astro:assets";
+const { src, alt } = Astro.props;
+---
+
+<Layout>
+  <Picture
+    pictureAttributes={{ class: " inset-0 object-cover" }}
+    class="w-full"
+    formats={["avif", "webp"]}
+    src={src}
+    alt={alt}
+    widths={[540, 1024, src.width]}
+    sizes={`(max-width: 540px) 540px, (max-width: 1024px) 1024px, ${src.width}px`}
+  />
+  <slot />
+</Layout>

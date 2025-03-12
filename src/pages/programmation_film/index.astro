@@ -1,0 +1,20 @@
+---
+import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
+import CardFilm from "../../components/CardFilm.astro";
+import Programme from "../../assets/img/programme.webp"
+
+import { datefilm } from "../../../backend/backend.mjs";
+const films = await datefilm();
+---
+
+<LayoutWithHero src={Programme} alt="image de la programmation des films">
+    <div class="grille my-24">
+        {films.length > 0 ? (
+            films.map(film => (
+                <CardFilm {...film} />
+            ))
+        ) : (
+            <p>Aucune programmation prévue.</p>
+        )}
+    </div>
+</LayoutWithHero>

@@ -1,0 +1,22 @@
+---
+import { oneIDActivite } from "../../../backend/backend.mjs";
+import Layout from "../../layouts/Layout.astro";
+const activite = await oneIDActivite(Astro.params.id_activite);
+import { formatDate } from "../../js/helpers";
+---
+
+<Layout>
+  <h1>{activite.type}</h1>
+
+  <p><strong>date de l'évenement :</strong>{formatDate(activite.date)}</p>
+  <p><strong>lieux : </strong>{activite.lieux}</p>
+  <p>
+    <strong>Invité :</strong>
+    <a href={`/invite/${activite.expand?.invite_activite.id}`}>
+      {activite.expand?.invite_activite.prenom}
+      {activite.expand?.invite_activite.nom}
+    </a>
+  </p>
+
+  <p><strong>description de l'évenement</strong>{activite.lieux}</p>
+</Layout>

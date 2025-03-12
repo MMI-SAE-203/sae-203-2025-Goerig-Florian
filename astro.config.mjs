@@ -8,8 +8,8 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-
-  integrations: [tailwind({ applyBaseStyles: false }), alpinejs()],
+output:"server",
+  integrations: [tailwind({ applyBaseStyles: false }),alpinejs()],
   experimental: {
     svg: true,
   }

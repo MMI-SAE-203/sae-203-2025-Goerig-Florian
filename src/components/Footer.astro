@@ -1,4 +1,17 @@
 ---
+import { Picture } from "astro:assets";
+
+// Import des images locales
+import regionImg from "../assets/img/région.webp";
+import grandBelfortImg from "../assets/img/grdbelfort.webp";
+import tourismBelfortImg from "../assets/img/TourismeBelfort.webp";
+import glenatImg from "../assets/img/glenat.webp";
+import kinepolisImg from "../assets/img/kinépolis.webp";
+import kissaImg from "../assets/img/kissa.webp";
+import gakkodentoImg from "../assets/img/gakkdento.webp";
+import necronomiconImg from "../assets/img/necronomicon.webp";
+
+// Import éventuel d'icônes si tu les utilises dans ce footer
 import LogoMmi from "../assets/icons/mmi_black.svg";
 import IconTikTok from "../assets/icons/TIKTOK.svg";
 import IconLinkedin from "../assets/icons/Linkedin.svg";
@@ -9,17 +22,123 @@ import Logo from "../assets/icons/LOGO.svg";
 ---
 
 <footer
-  class="space-y-10 px-6 pt-6  lg:grid-cols-2  lg:gap-8 lg:space-y-0 bg-[radial-gradient(184.83%_194.44%_at_105.85%_4.1%,_rgba(95,186,254,1)_46.89%,_rgba(105,211,129,1)_58.93%)]"
+  class="space-y-10 px-6 pt-6 lg:grid-cols-2 lg:gap-8 lg:space-y-0
+  bg-[radial-gradient(184.83%_194.44%_at_105.85%_4.1%,_rgba(95,186,254,1)_46.89%,_rgba(105,211,129,1)_58.93%)]"
 >
+  <ul class="flex flex-wrap justify-center gap-4 pb-10">
+    <li>
+      <a href="https://www.bourgognefranchecomte.fr">
+        <Picture
+          src={regionImg}
+          alt="Logo région bourgogne-franche-comté"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.grandbelfort.fr">
+        <Picture
+          src={grandBelfortImg}
+          alt="logo grand belfort"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.belfort-tourisme.com">
+        <Picture
+          src={tourismBelfortImg}
+          alt="Logo belfort tourisme"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.glenat.com/manga">
+        <Picture
+          src={glenatImg}
+          alt="logo glénat"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://kinepolis.fr/cinémas/kinepolis-belfort/info/">
+        <Picture
+          src={kinepolisImg}
+          alt="logo kinépolis"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/kissa.sanctuary/">
+        <Picture
+          src={kissaImg}
+          alt="logo kissa sanctuary"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.gakkodento.info">
+        <Picture
+          src={gakkodentoImg}
+          alt="logo gakkodento"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.necronomi-con.com">
+        <Picture
+          src={necronomiconImg}
+          alt="logo necronomicon"
+          inferSize
+          pictureAttributes={{
+            class: "h-16 w-auto",
+            loading: "lazy",
+          }}
+        />
+      </a>
+    </li>
+  </ul>
   <nav
-    class="px-5   gap-8 space-y-8 text-sm lg:text-base lg:columns-2 lg:col-span-2 lg:px-0 *:break-inside-avoid *:space-y-3"
+    class=" border-t border-black gap-8 space-y-8 pt-10 pb-10 text-sm lg:text-base lg:columns-2 lg:col-span-2 lg:px-0 *:break-inside-avoid *:space-y-3"
   >
     <div>
       <h4 class="uppercase">Navigation</h4>
       <ul class="text-black-400">
-        <li><a href="/request">Festival</a></li>
-        <li><a href="/pricing">Contact</a></li>
-        <li><a href="/reviews">Partenaires</a></li>
+        <li><a href="/a_propos">Festival</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
     <div>
@@ -37,10 +156,6 @@ import Logo from "../assets/icons/LOGO.svg";
   <div
     class="px-5 text-black-400 border-t border-black py-8 space-y-6 text-center lg:col-span-2 lg:flex lg:justify-around lg:items-center lg:space-y-0"
   >
-    <div class="flex items-center">
-      <p>©2025 Animēshon Tous droits réservés</p>
-      <Logo class="w-15 h-15 ml-24 mb-6" />
-    </div>
     <ul class="flex gap-8 justify-center">
       <li>
         <a href="https://facebook.com" aria-label="Facebook"><IconFacebook /></a
@@ -65,5 +180,11 @@ import Logo from "../assets/icons/LOGO.svg";
         <a href="https://linkedin.com" aria-label="Linkedin"><IconTikTok /></a>
       </li>
     </ul>
+    <div class="flex justify-center">
+      <Logo class="w-15 h-15 mb-6" />
+    </div>
+    <div class="flex justify-center">
+      <p>©2025 Animēshon Tous droits réservés</p>
+    </div>
   </div>
 </footer>

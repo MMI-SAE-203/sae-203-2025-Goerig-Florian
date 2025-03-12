@@ -4,15 +4,22 @@ import Programme from "../../assets/img/programme.webp";
 import { dateactivite } from "../../../backend/backend.mjs";
 import CardActivite from "../../components/CardActivite.astro";
 import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
-import Calendrier from "../../assets/img/calendrier.webp";
+
 const activites = await dateactivite();
 ---
 
-<LayoutWithHero src={Calendrier} alt="image de la programmation des activités">
+<LayoutWithHero src={Programme} alt="image de la programmation des activités">
+  <h2>
+    Bienvenue sur la page consacrée aux activités du Festival du Film
+    d'Animation Japonaise ! Plongez dans des ateliers interactifs et des
+    sessions immersives qui vous feront vivre l’animation de l’intérieur.
+    Explorez les coulisses des métiers de l’animation et partagez votre passion
+    dans une ambiance créative et conviviale !
+  </h2>
   <div class="grille my-24">
     {
       activites.length > 0 ? (
-        activites.map((activite) => <CardActivite {...activite} />)
+        activites.map((activite) => <CardActivite {...activites} />)
       ) : (
         <p>Aucune programmation prévue.</p>
       )

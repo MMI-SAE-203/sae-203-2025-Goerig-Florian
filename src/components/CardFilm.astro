@@ -2,60 +2,55 @@
 import { formatDate } from "../js/helpers";
 import ImagePB from "./ImagePB.astro";
 const { ...film } = Astro.props;
-console.log(film);
 ---
 
-<!-- <article
-  
-  class="group col-span-4 grid grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-[4fr_11fr] lg:grid-rows-1"
->
-  <ImagePB
-    record={film}
-    field="affiche"
-    alt={film.afficheAlt}
-    classPicture="col-start-1 row-start-1 w-full h-auto object-cover"
-      classImg="object-cover w-full h-full"
-    />
-  <h3
-    class="z-[1] col-start-2 row-start-1 my-6 mr-4 self-end font-mono text-3xl text-white"
+<div class="px-4">
+  <article
+    class="group col-span-4 grid grid-cols-1 grid-rows-[auto_1fr]
+           lg:grid-cols-[4fr_11fr] lg:grid-rows-1
+           mb-8 border border-gray-600 rounded-lg overflow-hidden"
   >
-    <a href={`/programation_film/${film.id}`}>{film.titre}</a>
-  </h3>
-  <div
-    class="z-[1] col-start-1 row-start-1 my-6 mr-4 self-end font-mono text-3xl text-white"></div>
-  >
-    <p class="uppercase">{formatDate(film.date)}</p>
-    <p>{film.description}</p>
+    <!-- Image cliquable avec une bordure à droite -->
     <a
       href={`/programmation_film/${film.id}`}
-      class="inline-block border-b-2 underline">Plus d'information sur le film</a>
+      class="col-start-1 row-start-1 w-full h-auto"
     >
-  </div>
-</article> -->
-<article
-  class="group col-span-4 grid grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-[4fr_11fr] lg:grid-rows-1"
->
-  <ImagePB
-    record={film}
-    field="affiche"
-    alt={film.titre}
-    classPicture="col-start-1 row-start-1 w-full h-auto object-cover"
-    classImg="object-cover w-full h-full"
-  />
+      <ImagePB
+        record={film}
+        field="affiche"
+        alt={film.titre}
+        classPicture="w-full h-auto object-cover"
+        classImg="object-cover border-r border-gray-600 w-full h-full"
+      />
+    </a>
 
-  <div
-    class="z-[2] col-span-1 col-start-1 lg:col-start-2 row-start-2 lg:row-start-1 space-y-4 bg-white p-6"
-  >
-    <h3
-      class="z-[1] col-start-1 row-start-1 my-6 mr-4 self-end font-mono text-3xl text-white"
+    <!-- Conteneur du texte avec fond semi-transparent et padding interne -->
+    <div
+      class="z-[2] col-span-1 col-start-1
+             lg:col-start-2 row-start-2 lg:row-start-1
+             flex flex-col justify-center items-center text-center
+             space-y-4 bg-lime-600/50 p-6 min-h-[300px]"
     >
-      <a href={`/programmation_film/${film.id}`}>{film.titre}</a>
-    </h3>
-    <p class="uppercase">{formatDate(film.date)}</p>
-    <p set:html={film.description} />
-    <a
-      href={`/programmation_film/${film.id}`}
-      class="inline-block border-b-2 border-black uppercase">Plus d'info</a
-    >
-  </div>
-</article>
+      <h3 class="font-mono text-3xl lg:text-4xl text-black">
+        <a href={`/programmation_film/${film.id}`}>{film.titre}</a>
+      </h3>
+      <p class="uppercase text-base lg:text-lg">
+        {formatDate(film.date)}
+      </p>
+      <p>
+        <strong>Invité :</strong>
+        <a href={`/invite/${film.expand?.invite_film.id}`} class="underline">
+          {film.expand?.invite_film.prenom}
+          {film.expand?.invite_film.nom}
+        </a>
+        <p class="text-base lg:text-lg" set:html={film.description} />
+        <a
+          href={`/programmation_film/${film.id}`}
+          class="inline-block  font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg"
+        >
+          Plus d'info
+        </a>
+      </p>
+    </div>
+  </article>
+</div>

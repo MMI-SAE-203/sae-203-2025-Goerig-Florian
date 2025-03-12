@@ -1,31 +1,57 @@
 ---
 import ImagePB from "./ImagePB.astro";
 const { ...invite } = Astro.props;
-console.log(invite);
 ---
 
-<article
-  class="group col-span-6 grid grid-cols-[24px_1fr] grid-rows-[200px_48px_1fr] lg:grid-cols-[2fr_11fr]"
->
-
-  <ImagePB
-    record={invite}
-    field="photo"
-    alt={invite.afficheAlt}
-    classPicture=" col-start-1 row-start-1 col-span-2 row-span-2 group-hover:before:bg-black"
-    classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
-  />
-  <h3
-    class="z-[1] col-start-2 row-start-1 my-6 mr-4 self-end font-mono text-3xl text-white"
+<div class="px-4">
+  <article
+    class="group col-span-4 grid grid-cols-1 grid-rows-[auto_1fr]
+           lg:grid-cols-[4fr_11fr] lg:grid-rows-1
+           mb-8 border border-gray-600 rounded-lg overflow-hidden"
   >
-    <a href={`/invite/${invite.id}`}>{invite.nom}, {invite.prenom}</a>
-  </h3>
-  <div
-    class="z-[2] col-span-1 col-start-2 row-span-2 row-start-2 space-y-4 bg-white p-6"
-  >
+    <!-- Image cliquable avec une bordure à droite -->
     <a
       href={`/invite/${invite.id}`}
-      class="inline-block border-b-2 border-black uppercase">Plus d'info</a
+      class="col-start-1 row-start-1 w-full h-auto"
     >
-  </div>
-</article>
+      <ImagePB
+        record={invite}
+        field="photo"
+        alt={invite.afficheAlt}
+        classPicture="w-full h-auto object-cover"
+        classImg="object-cover border-r border-gray-600 w-full h-full"
+      />
+    </a>
+
+    <!-- Conteneur du texte avec fond semi-transparent et padding interne -->
+    <div
+      class="z-[2] col-span-1 col-start-1
+             lg:col-start-2 row-start-2 lg:row-start-1
+             flex flex-col justify-center items-center text-center
+             space-y-4 bg-lime-600/50 p-6 min-h-[300px]"
+    >
+      <h3 class="font-mono text-3xl lg:text-4xl text-black">
+        <a href={`/invite/${invite.id}`}>
+          {invite.nom}
+          {invite.prenom}
+        </a>
+      </h3>
+
+      <!-- Exemple de champ 'role' -->
+      <p class="uppercase text-base lg:text-lg">
+        {invite.role}
+      </p>
+
+    
+    
+
+      <!-- Lien d'action -->
+      <a
+        href={`/invite/${invite.id}`}
+        class="inline-block font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg"
+      >
+        Plus d'info
+      </a>
+    </div>
+  </article>
+</div>

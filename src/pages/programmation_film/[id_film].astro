@@ -6,26 +6,73 @@ const film = await oneIDFilm(Astro.params.id_film);
 ---
 
 <Layout>
-  <h1>Programmation du film {film.titre}</h1>
-  <p><strong>Réalisateur:</strong> {film.realisateur}</p>
-  <p><strong>Année de sortie:</strong> <p set:html={film.annee} /></p>
-  <p><strong>Genre:</strong> {film.genre}</p>
-  <p><strong>Synopsis:</strong>{film.synopsis}</p>
-  <p><strong>Durée:</strong><p set:html={film.duree} /></p>
-<p><strong>Bande annonce:</strong> <a href={film.bande_annonce} target="_blank" rel="noopener noreferrer">Voir la bande annonce</a></p>
-  <p>
-    <ImagePB
-      record={film}
-      field="affiche"
-      alt={film.afficheAlt}
-      classPicture=" col-start-1 row-start-1 col-span-2 row-span-2 group-hover:before:bg-black"
-      classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
-    />
-  </p>
-<p>
-    <strong>Invité :</strong>
-    <a href={`/invite/${film.expand?.invite_film.id}`}>
-        {film.expand?.invite_film.prenom} {film.expand?.invite_film.nom}
-    </a>
-</p>
+  <div class="container mx-auto p-6">
+    <!-- Titre principal centré -->
+    <h1 class="text-3xl font-bold mb-4 text-center">
+      {film.titre}
+    </h1>
+
+    <!-- Grille responsive : 1 colonne sur mobile, 2 colonnes sur md+ -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Colonne de l'image -->
+      <div>
+        <a href={`/programmation_film/${film.id}`}>
+          <ImagePB
+            record={film}
+            field="affiche"
+            alt={film.afficheAlt}
+            classPicture="w-full h-auto object-cover"
+            classImg="w-full h-full object-cover"
+          />
+        </a>
+      </div>
+
+      <!-- Colonne des détails centrée -->
+      <div
+        class="flex flex-col divide-y divide-gray-300 md:divide-y-0
+               items-center text-center"
+      >
+        <p class="py-2">
+          <strong>Réalisateur :</strong> {film.realisateur}
+        </p>
+
+        <p class="py-2">
+          <strong>Année de sortie :</strong>
+          <span class="inline" set:html={film.annee} />
+        </p>
+
+        <p class="py-2">
+          <strong>Genre :</strong> {film.genre}
+        </p>
+
+        <p class="py-2">
+          <strong>Durée :</strong>
+          <span class="inline" set:html={film.duree} />
+        </p>
+
+        <p class="py-2">
+          <strong>Synopsis :</strong> {film.synopsis}
+        </p>
+
+        <p class="py-2">
+          <strong>Bande annonce :</strong>
+          <a
+            href={film.bande_annonce}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline"
+          >
+            Voir la bande annonce
+          </a>
+        </p>
+
+        <p class="py-2">
+          <strong>Invité :</strong>
+          <a href={`/invite/${film.expand?.invite_film.id}`} class="underline">
+            {film.expand?.invite_film.prenom} {film.expand?.invite_film.nom}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
 </Layout>

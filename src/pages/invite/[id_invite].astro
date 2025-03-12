@@ -6,17 +6,52 @@ const invite = await oneIDInvite(Astro.params.id_invite);
 ---
 
 <Layout>
-  <h1>{invite.prenom + " " + invite.nom}</h1>
-  <p>
-    <ImagePB
-      record={invite}
-      field="photo"
-      alt={invite.afficheAlt}
-      classPicture=" col-start-1 row-start-1 col-span-2 row-span-2 group-hover:before:bg-black"
-      classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
-    />
-  </p>
-  <p><strong>Rôle:</strong> {invite.role}</p>
-  <p><strong>Email:</strong>{invite.email}</p>
-  <p><strong>Biographie:</strong>{invite.biographie}</p>
+  <section class="max-w-5xl mx-auto px-4 py-8">
+    <!-- 
+      flex-col pour empiler l'image et le texte sur mobile,
+      flex-row à partir de md pour les mettre côte à côte.
+      items-center : aligne verticalement le contenu au centre sur md+.
+      min-h-[400px] : assure une hauteur minimale pour un centrage visible.
+    -->
+    <div
+      class="flex flex-col md:flex-row items-center md:space-x-8 min-h-[400px]"
+    >
+      <!-- Colonne de l'image -->
+      <div class="w-full pb-20 md:w-1/2">
+        <ImagePB
+          record={invite}
+          field="photo"
+          alt={invite.afficheAlt}
+          classPicture="w-full h-auto"
+          classImg="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Colonne du texte -->
+      <!-- justify-center : centre le texte dans sa colonne, 
+           text-center : centre horizontalement le texte sur mobile,
+           md:text-left : aligne le texte à gauche sur desktop si besoin. 
+      -->
+      <div
+        class="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left mt-4  md:mt-0"
+      >
+        <h1 class="text-slate-950 text-3xl pt-0 mb-0 font-bold pb-0 mb-4">
+          {invite.prenom}
+          {invite.nom}
+        </h1>
+        <p class="mb-2">
+          <strong>Rôle :</strong>
+          {invite.role}
+        </p>
+        <p class="mb-2">
+          <strong>Email :</strong>
+          {invite.email}
+        </p>
+        <p>
+          <strong>Biographie :</strong>
+          {invite.biographie}
+        </p>
+      </div>
+    </div>
+  </section>
 </Layout>

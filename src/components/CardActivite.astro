@@ -1,13 +1,47 @@
 ---
 import LayoutWithHero from "../layouts/LayoutWithHero.astro";
-
 const { ...activite } = Astro.props;
 ---
 
-<p>{activite.type}</p>
-<p>{activite.lieux}</p>
+<div class="px-4">
+  <article
+    class="group col-span-4 grid grid-cols-1 grid-rows-[auto_1fr]
+           lg:grid-cols-[4fr_11fr] lg:grid-rows-1
+           mb-8 border border-gray-600 rounded-lg overflow-hidden"
+  >
+    <!-- Bloc image cliquable (remplacez par ImagePB si vous avez un champ image) -->
+    <a
+      href={`/programmation_activite/${activite.id}`}
+      class="col-start-1 row-start-1 w-full h-auto"
+    >
+      <div
+        class="w-full h-full bg-gray-300 border-r border-gray-600 flex items-center justify-center"
+      >
+        <!-- Vous pouvez insérer ici une image via <ImagePB> si activite dispose d'un champ image -->
+        <span class="text-white font-bold">Image</span>
+      </div>
+    </a>
 
-<a
-  href={`/programmation_activite/${activite.id}`}
-  class="inline-block border-b-2 border-black uppercase">Plus d'info</a
->
+    <!-- Conteneur du texte avec fond semi-transparent et padding interne -->
+    <div
+      class="z-[2] col-span-1 col-start-1
+             lg:col-start-2 row-start-2 lg:row-start-1
+             flex flex-col justify-center items-center text-center
+             space-y-4 bg-lime-600/50 p-6 min-h-[300px]"
+    >
+      <h3 class="font-mono text-3xl lg:text-4xl text-black">
+        <a href={`/programmation_activite/${activite.id}`}>{activite.type}</a>
+      </h3>
+      <p class="text-base lg:text-lg">
+        <strong>Les activités :</strong>
+        {activite.type}
+      </p>
+      <a
+        href={`/programmation_activite/${activite.id}`}
+        class="inline-block font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg"
+      >
+        Plus d'info
+      </a>
+    </div>
+  </article>
+</div>

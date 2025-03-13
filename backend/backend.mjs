@@ -1,5 +1,5 @@
 import PocketBase from 'pocketbase';
-export const pb = new PocketBase('https://sae203.florian-goerig.fr');
+export const pb = new PocketBase('http://127.0.0.1:8090/');
 
 export async function datefilm() {
     const records = await pb.collection('film').getFullList({sort: 'date', expand: 'invite_film'});

@@ -8,18 +8,28 @@ const invites = await listeinvite();
 ---
 
 <LayoutWithHero src={Invite} alt="image de la programmation des films">
-  <h2>
-    Cette année, le festival célèbre l'univers fascinant de l'animation
-    japonaise avec la présence exceptionnelle de créateurs, artistes et experts
-    de renommée nationale et internationale. Découvrez nos invités d'honneur qui partageront
-    leurs expériences, leurs œuvres, et leurs inspirations avec vous tout au
-    long du festival.
+  <h2 class="text-center p-4">
+    Cette année, le festival célèbre l'univers fascinant de l'animation japonaise...
   </h2>
   
-  <div class="grille my-24">
+  <!-- Carrousel horizontal -->
+  <div class="overflow-x-auto flex space-x-4 px-4 snap-x snap-mandatory">
     {
       invites.length > 0 ? (
-        invites.map((invite) => <CardInvite {...invite} />)
+        invites.map((invite) => (
+          <!-- 
+            Largeur/hauteur fixes pour forcer des cartes identiques 
+            en mobile / tablette / desktop 
+          -->
+          <div class="
+            w-[300px] h-[400px]
+            sm:w-[400px] sm:h-[500px]
+            md:w-[500px] md:h-[600px]
+            flex-shrink-0 snap-center
+          ">
+            <CardInvite {...invite} />
+          </div>
+        ))
       ) : (
         <p>Aucun invité prévu.</p>
       )

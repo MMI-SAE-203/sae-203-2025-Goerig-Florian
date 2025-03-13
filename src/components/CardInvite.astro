@@ -3,55 +3,39 @@ import ImagePB from "./ImagePB.astro";
 const { ...invite } = Astro.props;
 ---
 
-<div class="px-4">
-  <article
-    class="group col-span-4 grid grid-cols-1 grid-rows-[auto_1fr]
-           lg:grid-cols-[4fr_11fr] lg:grid-rows-1
-           mb-8 border border-gray-600 rounded-lg overflow-hidden"
+<article
+  class="border border-gray-600 rounded-lg overflow-hidden flex flex-col w-full h-full"
+>
+  <!-- Zone image : prend 50% de la hauteur totale -->
+  <a href={`/invite/${invite.id}`} class="md:block w-full lg:h-1/2 md:h-1/2 hidden relative">
+    <ImagePB
+      record={invite}
+      field="photo"
+      alt={invite.afficheAlt}
+      classPicture="absolute inset-0 w-full h-full"
+      classImg="object-cover w-full h-full"
+    />
+  </a>
+
+  <!-- Zone texte : prend le reste (50%) -->
+  <!-- En mobile : pb-4 (bottom), pas de padding top, gauche, droite
+       En grand écran (lg+) : px-4 -->
+  <div
+    class="bg-lime-600/50 flex-1 flex flex-col justify-center items-center text-center
+           px-2 pb-4 lg:px-4"
   >
-    <!-- Image cliquable avec une bordure à droite -->
+    <h3 class="font-mono text-3xl lg:text-4xl text-black">
+      <a href={`/invite/${invite.id}`}>
+        {invite.nom}
+        {invite.prenom}
+      </a>
+    </h3>
+    <p class="uppercase text-base lg:text-lg pb-4">{invite.role}</p>
     <a
       href={`/invite/${invite.id}`}
-      class="col-start-1 row-start-1 w-full h-auto"
+      class="inline-block font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg mt-2"
     >
-      <ImagePB
-        record={invite}
-        field="photo"
-        alt={invite.afficheAlt}
-        classPicture="w-full h-auto object-cover"
-        classImg="object-cover border-r border-gray-600 w-full h-full"
-      />
+      Plus d'info
     </a>
-
-    <!-- Conteneur du texte avec fond semi-transparent et padding interne -->
-    <div
-      class="z-[2] col-span-1 col-start-1
-             lg:col-start-2 row-start-2 lg:row-start-1
-             flex flex-col justify-center items-center text-center
-             space-y-4 bg-lime-600/50 p-6 min-h-[300px]"
-    >
-      <h3 class="font-mono text-3xl lg:text-4xl text-black">
-        <a href={`/invite/${invite.id}`}>
-          {invite.nom}
-          {invite.prenom}
-        </a>
-      </h3>
-
-      <!-- Exemple de champ 'role' -->
-      <p class="uppercase text-base lg:text-lg">
-        {invite.role}
-      </p>
-
-    
-    
-
-      <!-- Lien d'action -->
-      <a
-        href={`/invite/${invite.id}`}
-        class="inline-block font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg"
-      >
-        Plus d'info
-      </a>
-    </div>
-  </article>
-</div>
+  </div>
+</article>

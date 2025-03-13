@@ -8,7 +8,7 @@ export function formatDate(dateString) {
         hour: "numeric",
         minute: "numeric",
         hour12: false,
-        timeZone: "Europe/Paris",
+        timeZone: "UTC",
     };
 
     const formatter = new Intl.DateTimeFormat("fr-FR", options);

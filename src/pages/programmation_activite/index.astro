@@ -19,7 +19,7 @@ const activites = await dateactivite();
   <div class="grille my-24">
     {
       activites.length > 0 ? (
-        activites.map((activite) => <CardActivite {...activites} />)
+        activites.map((activite) => <CardActivite {...activite} />)
       ) : (
         <p>Aucune programmation prévue.</p>
       )

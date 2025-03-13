@@ -1,66 +1,58 @@
 ---
-import LayoutWithHero from "../layouts/LayoutWithHero.astro";
-import CardAccueil from "../components/CardAccueil.astro";
+import Layout from "../layouts/Layout.astro";
+import CardWithSlot from "../components/CardWithSlot.astro";
+import CalendrierImg from "../assets/img/Calendrier.webp";
 import imgHero from "../assets/img/Accueil.webp";
-import FestivalImg from "../assets/img/festival.webp";
-import CalendrierImg from "../assets/img/calendrier.webp";
-import { Picture } from "astro:assets";
-const { src, alt } = Astro.props;
-import fleche from "../assets/icons/fleche2.svg";
+import LayoutWithHero from "../layouts/LayoutWithHero.astro";
 ---
 
-<LayoutWithHero src={imgHero} alt="image d'accueil">
-  <h1 class="lg text-center">Bienvenue chez animēshon !</h1>
-  <div>
-    <p>
-      Ne manquez pas l'occasion de participer à la toute première édition du
-      Festival du Film d'Animation Japonaise, qui se tiendra du 11 au 13 juillet
-      2025 à Belfort, à l'AtraXion.
-    </p>
-    <p>
-      Profitez d'une expérience inédite avec des projections captivantes et des
-      événements uniques.
-    </p>
+<LayoutWithHero src={imgHero} alt="Festival ANIMÉSHON">
+  <div class="container mx-auto p-6">
+    <h1 class="text-4xl font-bold mb-6 text-center">
+      Bienvenue au Festival du Film d'Animation Japonaise
+    </h1>
 
-    <CardAccueil text="En savoir plus sur le festival" src={FestivalImg} />
+    <h2 class="font-bold mb-6 text-center">
+      Premiere édition : du 11- 13 Juillet 2025 à l'Atraxion Belfort Andelnans
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <CardWithSlot href="/programmation_film">
+        <p class="text-lg text-gray-700">
+          Découvrez notre programmation de films d'animation japonaise, incluant
+          des avant-premières, des classiques et des rencontres avec des
+          réalisateurs.
+        </p>
+      </CardWithSlot>
+      <CardWithSlot href="/programmation_activite">
+        <p class="text-lg text-gray-700">
+          En savoir plus sur le festival, nos invités spéciaux, et les
+          événements spéciaux que nous avons prévus pour vous tout au long de
+          l'événement.
+        </p>
+      </CardWithSlot>
+      <CardWithSlot href="/en_savoir_plus">
+        <p class="text-lg text-gray-700">
+          Découvrez les différentes personnes qui vous accompagnerons et seront
+          présentes lors des activités et des projections que nous avons
+          prévues.
+        </p>
+      </CardWithSlot>
+    </div>
   </div>
-  <h2 class="lg text-center">Programme</h2>
-  <div>
-    <p>
-      Le Festival du Film d'Animation Japonaise, qui se déroulera du 11 au 13
-      juillet 2025 à Belfort, vous invite à trois jours dédiés à l’animation
-      japonaise. Découvrez des films exclusifs, des making-of captivants, et
-      participez à des discussions avec des professionnels du secteur.
-    </p>
-    <CardAccueil
-      text="En savoir plus sur les films au programme"
-      src={FestivalImg}
-    />
+  <div class="mt-8 mx-24">
+    <CardWithSlot href="/billetterie">
+      <h2 class="text-2xl font-bold mb-4 text-center">Billetterie</h2>
+      <p class="text-lg text-gray-700">
+        Le Festival du Film d'Animation Japonaise, qui se tiendra du 11 au 13
+        juillet 2025 à Belfort. Notre billetterie est simple et accessible, avec
+        des options pour tous les budgets, y compris des réductions pour les
+        étudiants et des événements gratuits.
+      </p>
+      <p class="text-lg text-gray-700 mt-4">
+        Consultez les informations sur les tarifs et modalités de réservation
+        ci-dessous, et n'attendez plus pour réserver votre place afin de
+        profiter des projections exclusives et des temps forts du festival!
+      </p>
+    </CardWithSlot>
   </div>
-  <p>
-    Des ateliers interactifs vous plongeront dans les métiers de l’animation, et
-    un stand mettra en avant des créations liées à la culture japonaise. Plongez
-    dans un univers de créativité et de partage !
-  </p>
-
-  <CardAccueil
-    text="En savoir plus sur la programmation des activitées "
-    src={CalendrierImg}
-  />
-  <h2 class="lg text-center">Billeterie</h2>
-  <p>
-    le Festival du Film d'Animation Japonaise, qui se tiendra du 11 au 13
-    juillet 2025 à Belfort. Notre billetterie est simple et accessible, avec des
-    options pour tous les budgets, y compris des réductions pour les étudiants
-    et des événements gratuits.
-  </p>
-  <p>
-    Consultez les informations sur les tarifs et modalités de réservation
-    ci-dessous, et n'attendez plus pour réserver votre place afin de profiter
-    des projections exclusives et des temps forts du festival!
-  </p>
-  <CardAccueil
-    text="Réservez votre billet."
-    src={CalendrierImg}
-  />
 </LayoutWithHero>

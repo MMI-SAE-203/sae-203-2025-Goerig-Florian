@@ -2,74 +2,68 @@
 import { oneIDFilm } from "../../../backend/backend.mjs";
 import Layout from "../../layouts/Layout.astro";
 import ImagePB from "../../components/ImagePB.astro";
+import { formatDate } from "../../js/helpers";
 const film = await oneIDFilm(Astro.params.id_film);
 ---
 
 <Layout>
-  <div class="container mx-auto p-6">
-    <!-- Titre principal centré -->
-    <h1 class="text-3xl font-bold mb-4 text-center">
+  <div class="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
+    <!-- Titre principal -->
+    <h1 class="text-4xl font-bold mb-6 text-center text-gray-800">
       {film.titre}
     </h1>
 
-    <!-- Grille responsive : 1 colonne sur mobile, 2 colonnes sur md+ -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Container flexible : en mobile, les éléments se stackent, en md+ ils sont côte à côte -->
+    <div class="flex flex-col md:flex-row gap-8">
       <!-- Colonne de l'image -->
-      <div>
+      <div class="md:w-1/2">
         <a href={`/programmation_film/${film.id}`}>
-          <ImagePB
-            record={film}
-            field="affiche"
-            alt={film.afficheAlt}
-            classPicture="w-full h-auto object-cover"
-            classImg="w-full h-full object-cover"
-          />
+          <!-- En mobile, on utilise un container avec h-0 et pb-[56.25%] pour forcer un ratio 16:9. En md, on reprend une hauteur pleine -->
+          <div class="relative w-full h-0 pb-[56.25%] md:h-full md:pb-0">
+            <ImagePB
+              record={film}
+              field="affiche"
+              alt={film.afficheAlt}
+              classPicture="absolute inset-0 w-full h-full object-cover rounded-lg shadow-lg"
+              classImg="w-full h-full object-cover"
+            />
+          </div>
         </a>
       </div>
 
-      <!-- Colonne des détails centrée -->
+      <!-- Colonne des détails -->
       <div
-        class="flex flex-col divide-y divide-gray-300 md:divide-y-0
-               items-center text-center"
+        class="md:w-1/2 flex flex-col justify-center space-y-4 text-lg text-gray-700"
       >
-        <p class="py-2">
-          <strong>Réalisateur :</strong> {film.realisateur}
+        <p>
+          <strong class="font-semibold">Réalisateur :</strong>
+          {film.realisateur}
         </p>
-
-        <p class="py-2">
-          <strong>Année de sortie :</strong>
-          <span class="inline" set:html={film.annee} />
+        <p>
+          <strong class="font-semibold">Année de sortie :</strong>
+          <span>{formatDate(film.annee)}</span>
         </p>
-
-        <p class="py-2">
-          <strong>Genre :</strong> {film.genre}
+        <p>
+          <strong class="font-semibold">Genre :</strong>
+          {film.genre}
         </p>
-
-        <p class="py-2">
-          <strong>Durée :</strong>
-          <span class="inline" set:html={film.duree} />
+        <p>
+          <strong class="font-semibold">Synopsis :</strong>
+          {film.synopsis}
         </p>
-
-        <p class="py-2">
-          <strong>Synopsis :</strong> {film.synopsis}
+        <p>
+          <strong class="font-semibold">Durée :</strong>
+          <span set:html={film.duree} />
         </p>
-
-        <p class="py-2">
-          <strong>Bande annonce :</strong>
+        <p>
+          <strong class="font-semibold">Bande annonce :</strong>
           <a
             href={film.bande_annonce}
             target="_blank"
             rel="noopener noreferrer"
-            class="underline"
+            class="underline text-blue-600"
           >
             Voir la bande annonce
-          </a>
-        </p>
-
-        <p class="py-2">
-          <strong>Invité :</strong>
-          <a href={`/invite/${film.expand?.invite_film.id}`} class="underline">
-            {film.expand?.invite_film.prenom} {film.expand?.invite_film.nom}
           </a>
         </p>
       </div>

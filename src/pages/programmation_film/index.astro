@@ -2,25 +2,29 @@
 import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
 import CardFilm from "../../components/CardFilm.astro";
 import festival from "../../assets/img/festival.webp";
-
 import { datefilm } from "../../../backend/backend.mjs";
 const films = await datefilm();
 ---
 
 <LayoutWithHero src={festival} alt="image de la programmation des films">
-  <h2>
-    Bienvenue sur la page dédiée à la programmation des films du Festival du
-    Film d'Animation Japonaise ! Ici, vous découvrirez une sélection exclusive
-    de films d’animation, accompagnée de making-of fascinants et de rencontres
-    enrichissantes avec des professionnels du secteur. Laissez-vous transporter
-    par l’univers magique du cinéma d’animation !
-  </h2>
+  <div class="text-center py-8">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">
+      Bienvenue sur la page dédiée à la programmation des films du Festival du
+      Film d'Animation Japonaise !
+    </h2>
+    <p class="text-lg text-gray-600">
+      Ici, vous découvrirez une sélection exclusive de films d’animation,
+      accompagnée de making-of fascinants et de rencontres enrichissantes avec
+      des professionnels du secteur. Laissez-vous transporter par l’univers
+      magique du cinéma d’animation !
+    </p>
+  </div>
   <div class="grille my-24">
     {
       films.length > 0 ? (
         films.map((film) => <CardFilm {...film} />)
       ) : (
-        <p>Aucune programmation prévue.</p>
+        <p class="text-center text-gray-600">Aucune programmation prévue.</p>
       )
     }
   </div>

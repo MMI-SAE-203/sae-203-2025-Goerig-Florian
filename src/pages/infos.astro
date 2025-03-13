@@ -1,0 +1,391 @@
+---
+import LayoutWithHero from "../layouts/LayoutWithHero.astro";
+import Activite from "../assets/img/activite.webp";
+import { Picture } from "astro:assets";
+import Atraxion from "../assets/img/atraxion.webp";
+import Restaurant from "../assets/img/restaurant.webp";
+import Question from "../assets/img/question.webp";
+---
+
+<LayoutWithHero src={Activite} alt="Image d'accueil">
+  <!-- Titre info pratique sous le hero -->
+  <div class="py-4 text-center">
+    <h1 class="text-3xl font-bold">Info pratique</h1>
+  </div>
+
+  <!-- Section Tarif -->
+  <section class="py-8 px-4 max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Tarif :</h2>
+    <ul class="list-disc list-inside space-y-2">
+      <li>Pass 1 jour : 20 €</li>
+      <li>Pass 3 jours : 50 €</li>
+      <li>
+        Tarif réduit (enfants de 6 à 12 ans, étudiants, demandeur d'emploi) :
+      </li>
+      <li>Pass 1 jour : 15 €</li>
+      <li>Pass 3 jours : 40 €</li>
+      <li>Gratuit pour les enfants de moins de 6 ans.</li>
+      <li>
+        Billetterie disponible en ligne et sur place (dans la limite des places
+        disponibles).
+      </li>
+    </ul>
+  </section>
+
+  <!-- Section Lieu -->
+  <section class="py-8 px-4 max-w-4xl mx-auto">
+    <div class="mb-6">
+      <Picture
+        class="w-full h-auto object-cover rounded-md"
+        src={Atraxion}
+        alt="Salle Atraxion en style animé"
+      />
+    </div>
+    <h2 class="text-2xl font-bold mb-2">LIEU :</h2>
+    <p class="mb-4">
+      A l’Atraxion, à Andelnans<br />
+      Adresse : Rue des Prés, 90400 Andelnans, France<br />
+      L’Atraxion est situé dans un cadre pratique et accessible, à proximité de grandes
+      villes et infrastructures :
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>À 10 minutes de Belfort en voiture.</li>
+      <li>À 1h de Mulhouse.</li>
+      <li>À 1h15 de Bâle.</li>
+    </ul>
+    <p class="mb-4">
+      Accès depuis les principales infrastructures de transport :
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        <strong>Aéroport de Bâle-Mulhouse-Freiburg</strong> : Situé à 1h15 de route,
+        il offre des liaisons internationales fréquentes. Des options de location
+        de voiture et des navettes sont disponibles.
+      </li>
+      <li>
+        <strong>Autoroute A36</strong> : Sortie Andelnans, l’Atraxion est à moins
+        de 5 minutes.
+      </li>
+    </ul>
+    <p>
+      Avec un emplacement stratégique et de nombreuses options de transport,
+      l’Atraxion est idéalement situé pour accueillir les visiteurs de toute la
+      région et au-delà.
+    </p>
+  </section>
+
+  <!-- Section Hébergements -->
+  <section class="py-8 px-4 max-w-4xl mx-auto">
+    <div class="mb-6">
+      <Picture
+        class="w-full h-auto object-cover rounded-md"
+        src={Restaurant}
+        alt="Suggestion d'hébergements"
+      />
+    </div>
+    <h2 class="text-2xl font-bold mb-4">HÉBERGEMENTS :</h2>
+    <p class="mb-4">Voici quelques suggestions pour votre séjour :</p>
+    <ul class="list-disc list-inside space-y-2">
+      <li>
+        <strong>Hôtels proches :</strong>
+        <ul class="list-disc list-inside ml-4 space-y-1">
+          <li>Hôtel ibis Belfort Danjoutin (8 min en voiture)</li>
+          <li>B&B Hôtel Belfort Nord Andelnans (5 min en voiture)</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Campings :</strong>
+        <ul class="list-disc list-inside ml-4 space-y-1">
+          <li>Camping de l'Étang des Forges (15 min en voiture)</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Airbnb :</strong> De nombreuses options disponibles à proximité.
+      </li>
+    </ul>
+  </section>
+
+  <!-- Section FAQ avec AlpineJS -->
+  <section class="py-8 px-4 max-w-4xl mx-auto">
+    <div class="mb-6">
+      <Picture
+        class="w-full h-auto object-cover rounded-md"
+        src={Question}
+        alt="Illustration FAQ"
+      />
+    </div>
+    <h2 class="text-2xl font-bold mb-4">FAQ :</h2>
+    <div class="space-y-4">
+      <!-- FAQ Item 1 -->
+      <div
+        x-data="{ isExpanded: false }"
+        class="border border-gray-200 rounded-md"
+      >
+        <button
+          type="button"
+          class="w-full flex items-center justify-between p-4 text-left font-medium hover:bg-gray-50 focus:outline-none"
+          x-on:click="isExpanded = !isExpanded"
+          :aria-expanded="isExpanded.toString()"
+          aria-controls="faq-1"
+        >
+          <span>Quels types d'activités sont prévues ?</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform"
+            :class="{'rotate-180': isExpanded}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          x-cloak
+          x-show="isExpanded"
+          id="faq-1"
+          class="p-4 text-sm bg-gray-800 text-white"
+        >
+          Nous proposerons des projections de films d'animation, des ateliers
+          d'initiation à l’animation japonaise, un déjeuner et un stand de
+          culture japonaise.
+        </div>
+      </div>
+      <!-- FAQ Item 2 -->
+      <div
+        x-data="{ isExpanded: false }"
+        class="border border-gray-200 rounded-md"
+      >
+        <button
+          type="button"
+          class="w-full flex items-center justify-between p-4 text-left font-medium hover:bg-gray-50 focus:outline-none"
+          x-on:click="isExpanded = !isExpanded"
+          :aria-expanded="isExpanded.toString()"
+          aria-controls="faq-2"
+        >
+          <span>Peut-on acheter des billets sur place ?</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform"
+            :class="{'rotate-180': isExpanded}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          x-cloak
+          x-show="isExpanded"
+          id="faq-2"
+          class="p-4 text-sm bg-gray-800 text-white"
+        >
+          Oui, mais nous vous recommandons d’acheter vos billets en ligne pour
+          garantir votre place.
+        </div>
+      </div>
+      <!-- FAQ Item 3 -->
+      <div
+        x-data="{ isExpanded: false }"
+        class="border border-gray-200 rounded-md"
+      >
+        <button
+          type="button"
+          class="w-full flex items-center justify-between p-4 text-left font-medium hover:bg-gray-50 focus:outline-none"
+          x-on:click="isExpanded = !isExpanded"
+          :aria-expanded="isExpanded.toString()"
+          aria-controls="faq-3"
+        >
+          <span>Puis-je venir déguisé ?</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform"
+            :class="{'rotate-180': isExpanded}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          x-cloak
+          x-show="isExpanded"
+          id="faq-3"
+          class="p-4 text-sm bg-gray-800 text-white"
+        >
+          Absolument ! Nous encourageons les visiteurs à venir en cosplay.
+        </div>
+      </div>
+      <!-- FAQ Item 4 -->
+      <div
+        x-data="{ isExpanded: false }"
+        class="border border-gray-200 rounded-md"
+      >
+        <button
+          type="button"
+          class="w-full flex items-center justify-between p-4 text-left font-medium hover:bg-gray-50 focus:outline-none"
+          x-on:click="isExpanded = !isExpanded"
+          :aria-expanded="isExpanded.toString()"
+          aria-controls="faq-4"
+        >
+          <span>Y aura-t-il des stands de nourriture ?</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform"
+            :class="{'rotate-180': isExpanded}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          x-cloak
+          x-show="isExpanded"
+          id="faq-4"
+          class="p-4 text-sm bg-gray-800 text-white"
+        >
+          Oui, plusieurs stands proposeront de la cuisine japonaise et
+          internationale.
+        </div>
+      </div>
+      <!-- FAQ Item 5 -->
+      <div
+        x-data="{ isExpanded: false }"
+        class="border border-gray-200 rounded-md"
+      >
+        <button
+          type="button"
+          class="w-full flex items-center justify-between p-4 text-left font-medium hover:bg-gray-50 focus:outline-none"
+          x-on:click="isExpanded = !isExpanded"
+          :aria-expanded="isExpanded.toString()"
+          aria-controls="faq-5"
+        >
+          <span
+            >Le site est-il accessible aux personnes à mobilité réduite ?</span
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform"
+            :class="{'rotate-180': isExpanded}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          x-cloak
+          x-show="isExpanded"
+          id="faq-5"
+          class="p-4 text-sm bg-gray-800 text-white"
+        >
+          Oui, l’Atraxion est équipé pour accueillir les personnes à mobilité
+          réduite.
+        </div>
+      </div>
+      <!-- FAQ Item 6 -->
+      <div
+        x-data="{ isExpanded: false }"
+        class="border border-gray-200 rounded-md"
+      >
+        <button
+          type="button"
+          class="w-full flex items-center justify-between p-4 text-left font-medium hover:bg-gray-50 focus:outline-none"
+          x-on:click="isExpanded = !isExpanded"
+          :aria-expanded="isExpanded.toString()"
+          aria-controls="faq-6"
+        >
+          <span>Les animaux sont-ils acceptés ?</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform"
+            :class="{'rotate-180': isExpanded}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          x-cloak
+          x-show="isExpanded"
+          id="faq-6"
+          class="p-4 text-sm bg-gray-800 text-white"
+        >
+          Malheureusement, les animaux ne sont pas autorisés, sauf les
+          chiens-guides.
+        </div>
+      </div>
+      <!-- FAQ Item 7 -->
+      <div
+        x-data="{ isExpanded: false }"
+        class="border border-gray-200 rounded-md"
+      >
+        <button
+          type="button"
+          class="w-full flex items-center justify-between p-4 text-left font-medium hover:bg-gray-50 focus:outline-none"
+          x-on:click="isExpanded = !isExpanded"
+          :aria-expanded="isExpanded.toString()"
+          aria-controls="faq-7"
+        >
+          <span
+            >Comment puis-je participer en tant que bénévole ou exposant ?</span
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transition-transform"
+            :class="{'rotate-180': isExpanded}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          x-cloak
+          x-show="isExpanded"
+          id="faq-7"
+          class="p-4 text-sm bg-gray-800 text-white"
+        >
+          Contactez-nous via la section "Contact" du site avec vos informations
+          et votre demande.
+        </div>
+      </div>
+    </div>
+  </section>
+</LayoutWithHero>

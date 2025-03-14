@@ -9,13 +9,17 @@ const activites = await dateactivite();
 ---
 
 <LayoutWithHero src={Programme} alt="image de la programmation des activités">
-<h2 style="font-weight: bold; color: black;">
+  <h2 style="font-weight: bold;  color: black;">
     Bienvenue sur la page consacrée aux activités du Festival du Film
-    d'Animation Japonaise ! Plongez dans des ateliers interactifs et des
-    sessions immersives qui vous feront vivre l’animation de l’intérieur.
-    Explorez les coulisses des métiers de l’animation et partagez votre passion
-    dans une ambiance créative et conviviale !
-</h2>
+    d'Animation Japonaise !
+  </h2>
+
+  <h2>
+    Plongez dans des ateliers interactifs et des sessions immersives qui vous
+    feront vivre l’animation de l’intérieur. Explorez les coulisses des métiers
+    de l’animation et partagez votre passion dans une ambiance créative et
+    conviviale !
+  </h2>
   <div class="grille my-24">
     {
       activites.length > 0 ? (

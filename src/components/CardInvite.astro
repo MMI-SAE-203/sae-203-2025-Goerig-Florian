@@ -25,7 +25,7 @@ const { ...invite } = Astro.props;
            px-2 pb-4 lg:px-4"
   >
     <h3 class="font-mono text-3xl lg:text-4xl text-black">
-      <a href={`/invite/${invite.id}`} >
+      <a class="hover text_white" href={`/invite/${invite.id}`} >
         {invite.nom}
         {invite.prenom}
       </a>
@@ -33,7 +33,7 @@ const { ...invite } = Astro.props;
     <p class="uppercase text-base lg:text-lg pb-4">{invite.role}</p>
     <a
       href={`/invite/${invite.id}`}
-      class="inline-block font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg mt-2"
+      class="inline-block font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg mt-2 hover:text-white"
     >
       Plus d'info
     </a>

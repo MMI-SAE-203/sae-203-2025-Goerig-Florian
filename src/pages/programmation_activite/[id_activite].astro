@@ -12,7 +12,7 @@ import { formatDate } from "../../js/helpers";
   <p><strong>lieux : </strong>{activite.lieux}</p>
   <p>
     <strong>Invité :</strong>
-    <a href={`/invite/${activite.expand?.invite_activite.id}`} class="underline">
+    <a href={`/invite/${activite.expand?.invite_activite.id}`} class="underline hover:text-white">
       {activite.expand?.invite_activite.prenom}
       {activite.expand?.invite_activite.nom}
     </a>

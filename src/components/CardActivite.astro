@@ -30,8 +30,8 @@ const { ...activite } = Astro.props;
              flex flex-col justify-center items-center text-center
              space-y-4 bg-lime-600/50 p-6 min-h-[300px]"
     >
-      <h3 class="font-mono text-3xl lg:text-4xl text-black">
-        <a href={`/programmation_activite/${activite.id}`}>{activite.type}</a>
+      <h3 class="font-mono text-3xl lg:text-4xl text-black ">
+        <a class="hover:text-white" href={`/programmation_activite/${activite.id}`}>{activite.type}</a>
       </h3>
       <p class="text-base lg:text-lg">
         <strong>Lieux :</strong>
@@ -39,7 +39,7 @@ const { ...activite } = Astro.props;
       </p>
       <a
         href={`/programmation_activite/${activite.id}`}
-        class="inline-block font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg"
+        class="inline-block font-bold  uppercase text-base lg:text-lg underline hover:text-white"
       >
         Plus d'info
       </a>

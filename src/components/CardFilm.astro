@@ -13,7 +13,7 @@ const { ...film } = Astro.props;
     <!-- Image cliquable avec une bordure à droite -->
     <a
       href={`/programmation_film/${film.id}`}
-      class="col-start-1 row-start-1 w-full h-auto"
+      class="col-start-1 row-start-1 w-full h-auto hover:text-white "
     >
       <ImagePB
         record={film}
@@ -29,24 +29,24 @@ const { ...film } = Astro.props;
       class="z-[2] col-span-1 col-start-1
              lg:col-start-2 row-start-2 lg:row-start-1
              flex flex-col justify-center items-center text-center
-             space-y-4 bg-lime-600/50 p-6 min-h-[300px]"
+             space-y-4 bg-lime-600/50 p-6 min-h-[300px] "
     >
-      <h3 class="font-mono text-3xl lg:text-4xl text-black">
-        <a href={`/programmation_film/${film.id}`}>{film.titre}</a>
+      <h3 class="font-mono text-3xl lg:text-4xl text-black hover:text-white">
+        <a class= "hover:text-white" href={`/programmation_film/${film.id}`}>{film.titre}</a>
       </h3>
       <p class="uppercase text-base lg:text-lg">
         {formatDate(film.date)}
       </p>
       <p>
         <strong>Invité :</strong>
-        <a href={`/invite/${film.expand?.invite_film.id}`} class="underline">
+        <a href={`/invite/${film.expand?.invite_film.id}`} class="underline hover:text-white">
           {film.expand?.invite_film.prenom}
           {film.expand?.invite_film.nom}
         </a>
         <p class="text-base lg:text-lg" set:html={film.description} />
         <a
           href={`/programmation_film/${film.id}`}
-          class="inline-block  font-bold border-b-2 border-gray-600 uppercase text-base lg:text-lg"
+          class="inline-block  font-bold  uppercase text-base lg:text-lg underline hover:text-white"
         >
           Plus d'info
         </a>

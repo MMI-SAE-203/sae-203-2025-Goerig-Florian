@@ -12,11 +12,9 @@ import { formatDate } from "../../js/helpers";
   <p><strong>lieux : </strong>{activite.lieux}</p>
   <p>
     <strong>Invité :</strong>
-    <a href={`/invite/${activite.expand?.invite_activite.id}`}>
+    <a href={`/invite/${activite.expand?.invite_activite.id}`} class="underline">
       {activite.expand?.invite_activite.prenom}
       {activite.expand?.invite_activite.nom}
     </a>
-  </p>
-
-  <p><strong>Lieux de l'évenement : </strong>{activite.lieux}</p>
-</Layout>
+  </p></Layout
+>
